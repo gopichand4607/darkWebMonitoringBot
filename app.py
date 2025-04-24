@@ -16,7 +16,7 @@ app.secret_key = 'your secret key'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'ravi4613'
+app.config['MYSQL_PASSWORD'] = 'Root'
 app.config['MYSQL_DB'] = 'darkweb'
 
 mysql = MySQL(app)
@@ -25,9 +25,9 @@ mysql = MySQL(app)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Change to your SMTP server
 app.config['MAIL_PORT'] = 587  # Change to the appropriate port
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'ravi.2003.io.in@gmail.com'  # Change to your email address
-app.config['MAIL_PASSWORD'] = 'egqsnzmsathmixeo'  # Change to your email password
-app.config['MAIL_DEFAULT_SENDER'] = 'ravi.2003.io.in@gmail.com'
+app.config['MAIL_USERNAME'] = 'example@gmail.com'  # Change to your email address
+app.config['MAIL_PASSWORD'] = 'dfghnmnbvcxcvb'  # Change to your email password
+app.config['MAIL_DEFAULT_SENDER'] = 'ex@gmail.com'
 
 mail = Mail(app)
 def check_for_leaks(html_content, organization_name, sensitive_data):
