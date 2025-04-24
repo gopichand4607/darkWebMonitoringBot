@@ -1,0 +1,44 @@
+<!--Store this code in 'display.html' file inside the 'templates' folder-->
+
+<html lang="en">
+	<head>
+		<title>display</title>
+		<link rel="stylesheet" href="../static/style.css">
+	</head>
+	<body bgcolor="#e6ffee">
+		<div class="one">
+			<div class="two">
+				<h1>MENU</h1>
+				<ul>
+					<li><a href="{{url_for('index')}}">Index</a></li>
+                    <li class="active"><a href="{{url_for('dashboard')}}">Dashboard</a></li>
+					<li><a href="{{url_for('display')}}">Display</a></li>
+					<li><a href="{{url_for('update')}}">Update</a></li>
+					<li><a href="{{url_for('logout')}}">Log out</a></li>
+				</ul>
+			</div>
+			<div class="content" align="center">
+				<div class="topbar">
+					<h2>Welcome !! You are in Dashboard Page!! </h2>				 
+				</div> </br>
+				<div class="contentbar">
+                    <h1>Dark Web Monitor</h1>
+
+                    <form method="POST" action="{{ url_for('check_leaks') }}">
+                        <button type="submit">Check for Leaks</button>
+                    </form>
+                
+                    {% if leaked_data %}
+                        <h2>Leaked Data:</h2>
+                        <ul>
+                            {% for data in leaked_data %}
+                                <li>{{ data }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}					 
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

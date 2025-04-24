@@ -1,0 +1,49 @@
+<html lang="en">
+	<head>
+		<title>Admin dashboad</title>
+		<link rel="stylesheet" href="../static/style.css">
+	</head>
+	<body bgcolor="#e6ffee">
+		<div class="one">
+			<div class="two">
+				<h1>MENU</h1>  
+				<ul>
+                    <li class="active"><a href="{{url_for('admin_dashboard')}}">Dashboard</a></li>
+                    <li><a href="{{url_for('admin_monitor')}}">Monitor</a></li>
+				</ul>
+			</div>
+			<div class="content" align="center">
+				<div class="topbar">
+					<h2>Welcome admin!! You are in Admin Dashboard Page!! </h2>				 
+				</div> </br>
+				<div class="contentbar">
+                    <h1>View All Registerd Companies</h1>
+                    <form method="GET" action="/admin/view_users">
+                        <button type="submit">View Users</button>
+                    </form>
+                    {% if users %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Organisation</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for account in users %}
+                            <tr>
+                                <td>{{ account[0] }}</td>
+                                <td>{{ account[1] }}</td>
+                                <td>{{ account[2] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}					 
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<html lang="en">
+	<head>
+		<title>Admin dashboad</title>
+		<link rel="stylesheet" href="../static/style.css">
+	</head> 
+	<body bgcolor="#e6ffee">
+		<div class="one">
+			<div class="two">
+				<h1>MENU</h1>
+				<ul>
+                    <li ><a href="{{url_for('admin_dashboard')}}">Dashboard</a></li>
+                    <li class="active"><a href="{{url_for('admin_monitor')}}">Monitor</a></li>
+				</ul>
+			</div>
+			<div class="content" align="center">
+				<div class="topbar">
+					<h1>Welcome admin!! You are in ADMIN MONITOR Page!! </h1>				 
+				</div> </br>
+				<div class="contentbar">
+                    <h1>View All Registerd Companies</h1>
+                    <form method="GET" action="/admin/monitor_data">
+                        <button class="mbtn" type="submit">Monitor</button>
+                    </form>
+                    {% if users %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Organisation</th>
+                                <th>Email</th>
+                                <th>IsLeaked</th>
+                                <th>Alert</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for account in users %}
+                            <tr>
+                                <td>{{ account[0] }}</td>
+                                <td>{{ account[1] }}</td>
+                                <td>{{ account[2] }}</td>
+                                <td><a class="tbutton" href="{{ url_for('admin_check_leaks',id = account[3] ) }}">Check_Leaks</a></td>
+                                <td><a class="tbutton2" href="{{ url_for('send_email', id = account[3] ) }}">Send_Mail</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}	
+                    
+                    {% if leaked_data %}
+                        <h2>Leaked Data:</h2>
+                        <ul>
+                            {% for data in leaked_data %}
+                                <li>{{ data }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>
